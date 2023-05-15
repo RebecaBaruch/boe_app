@@ -75,6 +75,76 @@ i img{
     position: -webkit-sticky;
 }
 
+.hiddenMenu{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 103px 13px 33px 13px;
+    width: 70%;
+    height: 100%;
+
+    background-color: white;
+    transition: 0.5s transform ease-out;
+    transform: translateX(-100%);
+}
+
+.hiddenMenu .closeMenuBtn{
+    position: absolute;
+    top: 33px;
+    right: 33px;
+}
+
+.hiddenMenu .closeMenuBtn img{
+    width: 30px;
+}
+
+.hiddenMenu ul{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 53px;
+    padding: 33px 0;
+    list-style: none;
+}
+
+.hiddenMenu ul li a{
+    display: flex;
+    gap: 23px;
+    align-items: center;
+
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.hiddenMenu ul li a i img{
+    width: 30px;
+}
+
+.hiddenMenu .exitBtn{
+    display: flex;
+    justify-content: start;
+    gap: 13px;
+    align-items: center;
+    padding: 23px 33px;
+    width: 80%;
+
+    border-radius: 33px;
+    color: var(--red);
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: #ff545433;
+    text-decoration: none;
+}
+
+.showMenu{
+    transform: translateX(0);
+}
+
 .showBtnContainer{
     gap: 13px;
 }
