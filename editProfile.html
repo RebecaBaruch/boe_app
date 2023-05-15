@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <title>Edit profile</title>
+</head>
+<body>
+    <div class="container editProfileContainer">
+        <button class="backBtn">
+            <img src="./src/img/arrow-left.svg" alt="arrow back icon">
+        </button>
+
+        <div class="headerTxtBox">
+            <h1>Editar perfil</h1>
+            <p>As alterações feitas na sua conta são salvas automaticamente.</p>
+        </div>
+
+        <div class="inputBox">
+            <label for="">
+                Nome
+                <i>
+                    <img src="./src/img/user2.svg" alt="sec user icon">
+                </i>
+            </label>
+
+            <input type="text" name="nameInput" class="dataInput" />
+        </div>
+        <div class="inputBox">
+            <label for="">
+                E-mail
+                <i>
+                    <img src="./src/img/email.svg" alt="email icon">
+                </i>
+            </label>
+
+            <input type="email" name="emailInput" class="dataInput" />
+        </div>
+
+        <div class="passBox">
+            <label for="">
+                Alterar a senha
+                <i>
+                    <img src="./src/img/key.svg" alt="password icon">
+                </i>
+            </label>
+            <input type="password" name="passInput" class="passInput" id="password" />
+        </div>
+    </div>
+</body>
+</html>

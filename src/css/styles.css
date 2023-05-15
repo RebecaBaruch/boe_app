@@ -51,6 +51,12 @@ i img{
     width: 100%;
 }
 
+button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
 .menuHeader, 
 .showBtnContainer,
 .filterContainer{
@@ -261,4 +267,67 @@ main .listContainer .cowItem{
     height: 7px;
     border-radius: 50%;
     background-color: var(--gray);
+}
+
+/*--- editProfile.html ------------*/
+.editProfileContainer{
+    gap: 53px;
+    align-items: start;
+    padding: 33px 0;
+}
+
+.headerTxtBox h1{
+    margin-bottom: 3px;
+    font-size: 1.7rem;
+}
+
+.headerTxtBox p{
+    font-size: .8rem;
+}
+
+.inputBox,
+.passBox{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 100%;
+}
+
+.inputBox label,
+.passBox label{
+    display: flex;
+    gap: 13px;
+    align-items: center;
+}
+
+.inputBox input,
+.inputBox:-webkit-autofill,
+.passBox input,
+.passBox input:-webkit-autofill{
+    background-color: white;
+    outline: none;
+}
+
+.inputBox label{
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.passBox label{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.inputBox .dataInput{
+    border: none;
+    border-bottom: 1px solid var(--blue);
+    outline: none;
+}
+
+.passBox input{
+    padding: 7px;
+    border: 2px solid var(--blue);
+    border-radius: 7px;
 }
