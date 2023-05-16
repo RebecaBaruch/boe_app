@@ -324,25 +324,184 @@ main .listContainer .cowItem{
     border-radius: 7px;
 }
 
+/*--- cowDetails.html ------------*/
+/*--- chart.js graphic --*/
 .chart-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: fit-content;
     margin: 0 auto;
 }
 
 .percent{
     position: absolute;
-    top: 39%;
+    top: 43%;
     left: 50%;
     transform: translateX(-50%);
 
     color: var(--black);
     font-family: var(--titleFont);
-    font-size: 1.3rem;
+    font-size: .9rem;
     font-weight: 800;
     z-index: 10;
+}
+
+.cowContainer{
+    gap: 53px;
+    align-items: start;
+    padding: 33px 0;
+}
+
+.cowContainer .cowProfile{
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+}
+
+.cowContainer .cowProfile .cowHeader{
+    display: flex;
+    gap: 23px;
+    width: 100%;
+}
+
+.cowContainer .cowProfile .cowHeader figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53px;
+    height: 53px;
+    border: 3px solid var(--blue);
+    border-radius: 50%;
+    background-color: var(--gray);
+    overflow: hidden;
+}
+
+.cowHeader .proData{
+    width: 70%;
+}
+
+.cowHeader .proData h1{
+    margin-bottom: 7px;
+    font-size: 1.4rem;
+    color: var(--black);
+}
+
+.cowHeader .proData input{
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    width: 100%;
+}
+
+.cowProfile .treatContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cowProfile .treatContainer h2{
+    font-size: .7rem;
+}
+
+.cowProfile .treatContainer select{
+    width: 83px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 13px rgba(0, 97, 119, 0.066);
+}
+
+.updatedContainer{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.updatedContainer .headerUpdated{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.updatedContainer .headerUpdated h1{
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.updatedContainer .headerUpdated span{
+    font-size: .7rem;
+    color: var(--gray);
+}
+
+.updatedContainer .resultContainer{
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
+    align-items: center;
+    width: 100%;
+}
+
+.resultContainer .resultBox{
+    display: flex;
+}
+
+.resultBox span{
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--yellow);
+}
+
+.updatedContainer .descContainer{
+    display: flex;
+    gap: 13px;
+    color: var(--black);
+}
+
+.updatedContainer .descContainer figure{
+    width: 53px;
+    height: 53px;
+    border-radius: 5px;
+    background-color: var(--gray);
+}
+
+.descContainer .descTxtBox{
+    width: 70%;
+}
+
+.resultBox .resultTxt h1,
+.descContainer .descTxtBox h1{
+    font-size: .9rem;
+}
+
+.resultBox .resultTxt p,
+.descContainer .descTxtBox p{
+    font-size: .53rem;
+}
+
+.newAnaliFooter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    padding: 13px;
+    width: 100%;
+
+    background-color: white;
+    box-shadow: 0px -4px 21px rgba(0, 97, 119, 0.068);
+    border-radius: 20px 20px 0px 0px;
+    z-index: 11;
+}
+
+.newAnaliFooter .newAnaliBtn{
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+    align-items: center;
+    padding: 7px;
+    width: 100%;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    background-color: var(--blue);
 }

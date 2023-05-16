@@ -9,22 +9,27 @@
 </head>
 <body>
     <div class="container cowContainer">
+        <button class="backBtn">
+            <img src="./src/img/arrow-left.svg" alt="arrow back icon">
+        </button>
         <div class="cowProfile">
             <div class="cowHeader">
                 <figure></figure>
+
                 <div class="proData">
-                    <h1>ID</h1>
-                    <input type="text" name="cowName" class="cowName" id="cowName">
+                    <h1>ID432</h1>
+                    <input type="text" name="cowName" class="cowName" id="cowName" value="Chica">
                 </div>
             </div>
-        </div>
-        <div class="treatContainer">
-            <h2>Status de tratamento</h2>
-            <select name="treatSelect" id="treatSelect" class="treatSelect">
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-            </select>
+            <div class="treatContainer">
+                <h2>Status de <br> tratamento</h2>
+
+                <select name="treatSelect" id="treatSelect" class="treatSelect">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
         </div>
 
         <div class="updatedContainer">
@@ -33,15 +38,39 @@
                 <span class="date">09/05/2023</span>
             </div>
 
-            <div class="chart-container">
-                <span class="percent">
-                    70%
-                </span>
-                <canvas id="chart">
-                </canvas>
-              </div>
+            <div class="resultContainer">
+                <div class="chart-container">
+                    <span class="percent">
+                        50%
+                    </span>
+                    <canvas id="chart">
+                    </canvas>
+                </div>
+                <div class="resultBox">
+                    <div class="resultTxt">
+                        <h1>Resultados</h1>
+                        <p>Chance de infecção com baixa complicação</p>
+                    </div>
+                    <span>moderado</span>
+                </div>
+            </div>
+
+            <div class="descContainer">
+                <figure></figure>
+                <div class="descTxtBox">
+                    <h1>Descrição da análise</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat dolore qui debitis.</p>
+                </div>
+            </div>
         </div>
     </div>
+
+    <footer class="newAnaliFooter">
+        <a href="" class="newAnaliBtn">
+            <img src="./src/img/plus.svg" alt="plus icon">
+            nova análise
+        </a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
