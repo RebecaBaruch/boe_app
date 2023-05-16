@@ -300,16 +300,8 @@ main .listContainer .cowItem{
     align-items: center;
 }
 
-.inputBox input,
-.inputBox:-webkit-autofill,
-.passBox input,
-.passBox input:-webkit-autofill{
-    background-color: white;
-    outline: none;
-}
-
 .inputBox label{
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: 700;
     color: var(--gray);
 }
@@ -330,4 +322,27 @@ main .listContainer .cowItem{
     padding: 7px;
     border: 2px solid var(--blue);
     border-radius: 7px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.percent{
+    position: absolute;
+    top: 39%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: var(--black);
+    font-family: var(--titleFont);
+    font-size: 1.3rem;
+    font-weight: 800;
+    z-index: 10;
 }

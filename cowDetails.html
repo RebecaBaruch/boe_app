@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/styles.css">
+    <title>Cow details</title>
+</head>
+<body>
+    <div class="container cowContainer">
+        <div class="cowProfile">
+            <div class="cowHeader">
+                <figure></figure>
+                <div class="proData">
+                    <h1>ID</h1>
+                    <input type="text" name="cowName" class="cowName" id="cowName">
+                </div>
+            </div>
+        </div>
+        <div class="treatContainer">
+            <h2>Status de tratamento</h2>
+            <select name="treatSelect" id="treatSelect" class="treatSelect">
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="updatedContainer">
+            <div class="headerUpdated">
+                <h1>Última análise</h1>
+                <span class="date">09/05/2023</span>
+            </div>
+
+            <div class="chart-container">
+                <span class="percent">
+                    70%
+                </span>
+                <canvas id="chart">
+                </canvas>
+              </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="./src/js/chart.js"></script>
+</body>
+</html>
