@@ -393,6 +393,11 @@ main .listContainer .cowItem{
     width: 100%;
 }
 
+.cowHeader .proData input:focus{
+    outline: none;
+    border-bottom: 1.5px solid var(--blue);
+}
+
 .cowProfile .treatContainer{
     display: flex;
     justify-content: space-between;
