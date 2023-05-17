@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animando Vetores</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap');
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+    }
+
+    .container span{
+      position: absolute;
+      bottom: 73px;
+    }
+
+    .vectorContainer{
+      display: flex;
+      justify-content: center;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+
+    .line {
+      display: flex;
+      justify-content: center;
+      align-items: end;
+    }
+    
+    .firstLine{
+      position: relative;
+      gap: 3px;
+      width: 10px;
+    }
+
+    .horn01, .horn02{
+      position: absolute;
+      top: 100%;
+    }
+
+    .horn01{
+      right: 0px;
+    }
+
+    .horn02{
+      left: 0px;
+    }
+
+    .vector {
+      /*width: 100px; 
+      height: 100px;*/ 
+      margin: 10px; /* Ajuste o espaçamento entre os vetores */
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="vectorContainer">
+      <div class="line">
+        <img src="./src/img/b.svg" alt="b vector svg" class="vector"  id="vector1">
+        <img src="./src/img/o.svg" alt="o vector svg" class="vector" id="vector2">
+        <img src="./src/img/e.svg" alt="b vector svg" class="vector" id="vector3">
+      </div>
+      <div class="line firstLine">
+        <img src="./src/img/horn01.svg" alt="b vector svg" class="vector horn01" id="vector4">
+        <img src="./src/img/horn02.svg" alt="b vector svg" class="vector horn02" id="vector5">
+      </div>
+    </div>
+
+    <span>
+      ByOberon
+    </span>
+  </div>
+
+  <script>
+    const vectors = document.querySelectorAll('.vector');
+let currentIndex = 0;
+
+function showNextVector() {
+  if (currentIndex < vectors.length) {
+    vectors[currentIndex].style.opacity = '1'; // Mostra o vetor atual
+    currentIndex++;
+    setTimeout(showNextVector, 500); // Chama a função novamente após 0,5 segundo
+  }
+}
+
+showNextVector(); // Inicia a animação exibindo o primeiro vetor
+  </script>
+  
+
+</body>
+</html>
