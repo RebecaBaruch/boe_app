@@ -309,3 +309,200 @@ footer{
   background-size: 4em 4em;
   background-position: center center;
 }
+
+/* Analise
+#analise{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  padding: 40px; 
+  gap: 40px;
+}
+
+#icon-analise{
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.icon-menu-analise{
+  background: url(../images/icon-menu.svg) no-repeat;
+  display: block;
+  width: 1.8em;
+  height: 2.1em;
+
+}
+.icon-boe-pesquisa{
+  background: url(../images/search.svg) no-repeat;
+  display: block;
+  width: 1.8em;
+  height: 2.2em;
+}
+
+#button-filtro{
+  align-self:flex-start;
+}
+#button-positivo{
+  background-color: var(--bgComponents);
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;   
+}
+#button-tudo{
+  background-color: var(--bgComponents);
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;   
+}
+
+#button-icon-filtro{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.icon-filters{
+  background: url(../images/icon-filters.svg) no-repeat;
+  display: block;
+  width: 1.8em;
+  height: 2.2em;
+  background-size: 80%;
+}
+
+#lista-card-historico{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#card-historico{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-style: solid;
+  border-bottom: 10px solid #22DF7A;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: .10em .10em .10em .10em #eeeded;
+}
+
+#button-status{
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: #22DF7A;
+  align-self: center;
+}
+
+#card-historico img{
+  width: 60px;
+  height: 60px;
+  background-size: 30px 30px;
+  border-radius: 10px;
+}
+
+#card-model{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+  }
+
+#card-model-trat{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 5px;
+  } 
+#status-tratamento{
+    display: flex;
+    gap: 8px;
+} */
+
+#posanalise{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #FF5454;
+  padding: 40px;
+  gap: 40px;
+}
+
+#posanalise h1{
+  font-size: 16px;
+}
+#posanalise p{
+  font-size: 12px;
+}
+
+#resultado-analise{
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+
+}
+
+#button-porcentagem{
+  width: 50px;
+  height: 50px;
+  border-color: #FF5454;
+  border-radius: 50%;
+  align-self: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+#text-resultado-analise{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding-left: 20px;
+}
+
+#button-cadastrar{
+  background-color: var(--bgComponents);
+  padding: 15px;
+  width: 90%;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;   
+
+}
+
+.icon-complicacoes{
+  background: url(../images/icon-complicacoes.svg) no-repeat;
+  display: block;
+  width: 3em;
+  height: 3em;
+  background-size: 2em 2em;
+
+}
+
+.icon-contaminacao{
+  background: url(../images/icon-contaminacao.svg) no-repeat;
+  display: block;
+  width: 3em;
+  height: 3em;
+  background-size: 2em 2em;
+}
+
+  #titulo-text-posanalise{
+    display: flex;
+    align-self: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
