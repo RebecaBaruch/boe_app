@@ -10,3 +10,12 @@ function showNextVector() {
 }
 
 showNextVector(); // Inicia a animação exibindo o primeiro vetor
+
+const circle = document.querySelector('.circle');
+
+function expandCircle() {
+  circle.style.width = '1168px';
+  circle.style.height = '1168px';
+}
+
+setTimeout(expandCircle, 3300);

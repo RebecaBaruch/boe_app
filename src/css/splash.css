@@ -9,7 +9,7 @@ body {
     padding: 0;
 }
 
-.container{
+.splashContainer{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -19,7 +19,7 @@ body {
     font-weight: 700;
 }
 
-.container span{
+.splashContainer span{
     position: absolute;
     bottom: 73px;
 }
@@ -61,3 +61,15 @@ body {
     opacity: 0;
     transition: opacity 0.5s;
 }
+
+.circle {
+    position: fixed;
+    top: -7%;
+    left: -100%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: var(--blue);
+    z-index: 11;
+    transition: width 1s ease-out, height 1s ease-out;
+  }
