@@ -22,6 +22,18 @@
     gap: 40px;
 }
 
+.circle {
+  position: fixed;
+  top: -7%;
+  left: -100%;
+  width: 1168px;
+  height: 1168px;
+  border-radius: 50%;
+  background-color: var(--bgComponents);
+  z-index: 11;
+  transition: width 1s ease-out, height 1s ease-out;
+}
+
 #icon-login{
     align-self: flex-end;
     padding-bottom: 20px;

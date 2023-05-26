@@ -19,3 +19,8 @@ function expandCircle() {
 }
 
 setTimeout(expandCircle, 3300);
+
+// Após 5 segundos (5000 milissegundos), a tela será redirecionada
+setTimeout(function() {
+  window.location.href = 'login.html';
+}, 5000);
