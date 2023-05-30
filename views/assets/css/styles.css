@@ -32,6 +32,11 @@ body{
     font-family: var(--titleFont);
 }
 
+.nav-footer{
+    position: fixed;
+    left: 0 !important;
+}
+
 .container{
     width: 80%;
     height: 90%;
@@ -193,6 +198,7 @@ main .listContainer{
     flex-direction: column;
     gap: 23px;
     align-items: center;
+    margin-bottom: 13vh;
     width: 100%;
 }
 
