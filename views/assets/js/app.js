@@ -7,10 +7,22 @@ function toggleMenu(){
     hiddenMenu.classList.toggle("showMenu");
 }
 
-menuBtn.addEventListener("click", toggleMenu);
-closeMenuBtn.addEventListener("click", toggleMenu);
-container.addEventListener("click", () => {
-    if(hiddenMenu.classList.contains("showMenu")) {
-        toggleMenu()
-    }
-});
+if(menuBtn && closeMenuBtn && container){
+    menuBtn.addEventListener("click", toggleMenu);
+    closeMenuBtn.addEventListener("click", toggleMenu);
+    container.addEventListener("click", () => {
+        if(hiddenMenu.classList.contains("showMenu")) {
+            toggleMenu()
+        }
+    });
+}
+
+const backBtn = document.querySelectorAll(".backBtn");
+
+if(backBtn){
+    backBtn.forEach(element => {
+        element.addEventListener("click", ()=>{
+            history.back();
+        })
+    });
+}

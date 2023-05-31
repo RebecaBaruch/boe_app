@@ -357,12 +357,14 @@ main .listContainer .cowItem{
     gap: 53px;
     align-items: start;
     padding: 33px 0;
+    width: 83%;
 }
 
 .cowContainer .cowProfile{
     display: flex;
     flex-direction: column;
     gap: 33px;
+    width: 100%;
 }
 
 .cowContainer .cowProfile .cowHeader{
@@ -411,7 +413,7 @@ main .listContainer .cowItem{
 }
 
 .cowProfile .treatContainer h2{
-    font-size: .7rem;
+    font-size: .9rem;
 }
 
 .cowProfile .treatContainer select{
@@ -440,7 +442,7 @@ main .listContainer .cowItem{
 }
 
 .updatedContainer .headerUpdated span{
-    font-size: .7rem;
+    font-size: .9rem;
     color: var(--gray);
 }
 
@@ -457,7 +459,7 @@ main .listContainer .cowItem{
 }
 
 .resultBox span{
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: 700;
     color: var(--yellow);
 }
@@ -486,7 +488,7 @@ main .listContainer .cowItem{
 
 .resultBox .resultTxt p,
 .descContainer .descTxtBox p{
-    font-size: .53rem;
+    font-size: .63rem;
 }
 
 .newAnaliFooter{
