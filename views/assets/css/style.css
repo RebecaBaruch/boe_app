@@ -442,6 +442,10 @@ footer{
     gap: 8px;
 } */
 
+.posanaliseBody{
+  transition: all 2s ease-out;
+}
+
 #posanalise{
   display: flex;
   flex-direction: column;

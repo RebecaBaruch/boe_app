@@ -101,6 +101,7 @@ button{
     background-color: white;
     transition: 0.5s transform ease-out;
     transform: translateX(-100%);
+    z-index: 11;
 }
 
 .hiddenMenu .closeMenuBtn{
@@ -515,4 +516,149 @@ main .listContainer .cowItem{
     color: white;
     font-weight: 700;
     background-color: var(--blue);
+}
+
+/* processScreen.html */
+.processContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('../images/boi-bg.svg') no-repeat center;
+}
+
+.camGrid{
+    width: 83%;
+    transition: all 3s ease-out;
+}
+
+.camGrid img{
+    width: 100%;
+}
+
+.processContainer,
+.photoImg,
+.progressContent{
+    transition: 3s ease-out;
+}
+
+.processContent{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.contentHidden{
+    display: none;
+}
+
+.progressHidden{
+    display: none;
+}
+
+.contentShow{
+    display: flex;
+}
+
+/*progress*/
+.progressContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 33px;
+    position: absolute;
+    bottom: 43px;
+    width: 43%;
+}
+
+.progressContent .progress{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    width: 100%;
+}
+
+.progress .barContainer{
+    width: 100%;
+    height: 5px;
+    border-radius: 13px;
+    background-color: rgba(255, 255, 255, 0.135);
+    overflow: hidden;
+}
+
+.progress .progressCount{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: white;
+}
+
+.barContainer .progressBar{
+    width: 1%;
+    height: 100%;
+    background-color: white;
+}
+
+.progressContent .cancelButton{
+    padding: 13px;
+    border-radius: 33px;
+    border: 2px solid white;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.116);
+}
+/**/
+.processContent .btnHeader{
+    width: 100%;
+}
+
+.processContent .btnsContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 33px;
+    align-items: center;
+    width: 100%;
+}
+
+.btnsContainer .typeBtnContainer{
+    display: flex;
+    justify-content: center;
+    gap: 33px;
+    align-items: center;
+    padding: 13px 23px;
+    border-radius: 33px;
+    font-size: .8rem;
+    color: white;
+    background-color: var(--black);
+}
+
+.typeBtnContainer span{
+    font-weight: bold;
+}
+
+.typeBtnContainer div label{
+    font-weight: lighter;
+    color: rgba(255, 255, 255, 0.345);
+}
+
+.typeBtnContainer .inputFile{
+    display: none;
+}
+
+.btnsContainer .camButton{
+    width: 43px;
+    height: 43px;
+    outline: 13px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    background-color: white;
 }

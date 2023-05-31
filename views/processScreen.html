@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Analysis process</title>
+</head>
+<body class="processBody">
+    <div class="processContainer">
+        <div class="camGrid">
+            <img src="./assets/images/photo-canva.svg" alt="photo-canva" class="photoImg">
+        </div>
+        <div class="processContent">
+            <header class="btnHeader">
+                <button class="backBtn">
+                    <img src="./assets/images/arrow-left-circle.svg" alt="back button icon">
+                </button>
+            </header>
+
+            <div class="btnsContainer">
+                <div class="typeBtnContainer">
+                    <span>Registrar</span>
+                    <div class="inputFileContainer">
+                        <label for="galleryInput" class="btnFile">Select Image</label>
+                        <input type="file" name="gelleryInput" id="galleryInput" class="inputFile">
+                    </div>
+                </div>
+                <button class="camButton"></button>
+            </div>
+        </div>
+        <div class="progressHidden">
+            <div class="progress">
+                <div class="barContainer">
+                    <div class="progressBar"></div>
+                </div>
+                <span class="progressCount"></span>
+            </div>
+            <button class="cancelButton">Cancelar</button>
+        </div>
+    </div>
+
+    <script>
+        //back nav button
+        const backBtn = document.querySelector(".backBtn");
+
+        backBtn.addEventListener("click", ()=>{
+            history.back();
+        })
+
+        //itens da captura de imagem
+        let photoImg = document.querySelector(".photoImg");
+        const camButton = document.querySelector(".camButton");
+        const processContent = document.querySelector(".processContent");
+
+        //itens do processo
+        const progressContent = document.querySelector(".progressHidden");
+        const cancelButton = document.querySelector(".cancelButton");
+        const progressBar = document.querySelector(".progressBar");
+        const countSpan = document.querySelector(".progressCount"); 
+
+        let width = 1;
+        
+        const processProgress = () => {
+            progressContent.classList.toggle("progressContent");    
+            
+            let identity = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(identity);
+                    console.log(width);
+                    progressContent.classList.toggle("progressContent");
+
+                    photoImg.src = "./assets/images/phProcess02.svg";
+
+                    setTimeout(() =>{
+                        window.location.href = "./posanalise.html"
+                    }, 1300)
+                    
+                } else {
+                    width++; 
+                    progressBar.style.width = width + '%'; 
+                    countSpan.innerHTML = width + '%';
+                }
+            }, 23);
+
+        }
+       
+        const startProcess = () => {
+            photoImg.src = "./assets/images/phProcess01.svg";
+            processContent.classList.toggle('contentHidden');
+            processProgress();
+        }
+
+        const stopProcess = () => {
+            progressContent.classList.toggle("progressContent");
+            photoImg.src = "./assets/images/photo-canva.svg";
+            processContent.classList.toggle('contentHidden');
+            
+            clearInterval(identity);
+            width = 1;
+        }
+        
+
+        camButton.addEventListener("click", startProcess);
+        cancelButton.addEventListener("click", stopProcess);
+    </script>
+</body>
+</html>
