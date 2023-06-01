@@ -16,9 +16,17 @@ loginForm.addEventListener("submit", (e)=>{
             password: passUser.value
         })  
     })
-    .then(response => response.json())
+    .then(response => {
+        response.json();
+        console.log(response.status);
+        if(response.status===200)location.href = './menu.html';
+        if(response.status!==200){
+            user.classList.toggle('erro');
+            passUser.classList.toggle('erro');
+        }
+    })
     .then(responseData => {
-        console.log(responseData);
+        console.log(responseData.mensagem);
     })
     .catch(error => {
         console.log(error)
