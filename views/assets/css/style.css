@@ -23,7 +23,15 @@
 }
 
 .erro{
-  animation: animacaoErro 3s;
+  animation: animacaoErro 2s;
+}
+
+.secErro{
+  animation: animacaoSecErro 2s;
+}
+
+.success{
+  animation: animacaoSuccess 2s;
 }
 
 @keyframes animacaoErro{
@@ -31,7 +39,32 @@
     border-bottom-color: transparent;
   }
   50%{
-    border-bottom-color: red;
+    border-bottom-color: #FF5454;
+  }
+  100%{
+    border-bottom-color: transparent;
+  }
+}
+
+@keyframes animacaoSecErro {
+  0%{
+    border-bottom-color: transparent;
+  }
+  50%{
+    border-bottom-color: #FFAD0F;
+  }
+  100%{
+    border-bottom-color: transparent;
+  }
+}
+
+
+@keyframes animacaoSuccess {
+  0%{
+    border-bottom-color: transparent;
+  }
+  50%{
+    border-bottom-color: #22DF7A;
   }
   100%{
     border-bottom-color: transparent;
@@ -268,14 +301,14 @@ label {
   border-radius: 5px;
   padding: 20px ;
   width: 45%;
-  box-shadow: .10em .10em .10em .10em #d8d8d8;
+  box-shadow: 0px 4px 21px rgba(0, 98, 119, 0.1);
 }
 #menu-positivos{
   border: none;
   border-radius: 5px;
   padding: 20px;
   width: 45%;
-  box-shadow: .10em .10em .10em .10em #d8d8d8;
+  box-shadow: 0px 4px 21px rgba(0, 98, 119, 0.1);
 }
 
 #menu-grafico{
@@ -284,7 +317,6 @@ label {
   gap: 20px;
   align-items: start;
   width: 100%;
-  background-color: yellow;
 }
 
 #menu-grafico h1{

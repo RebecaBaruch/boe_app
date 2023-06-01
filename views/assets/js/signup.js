@@ -3,6 +3,8 @@ const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const passConfirm = document.querySelector("#passwordConfirm");
 
+const formComponents = [nome, email, password, passConfirm];
+
 const sendBtn = document.querySelector("#button-signup");
 const formSignup = document.querySelector("#formSignup");
 
@@ -25,7 +27,34 @@ formSignup.addEventListener("submit", (e) =>{
           confirmPassword: password.value
         })
       })
-      .then(response => response.json())
+      .then(response => {
+        response.json();
+        console.log(response.status);
+        if(response.status === 200 && passConfirm.value === password.value){
+
+          console.log(response.status);
+
+          formComponents.forEach(el =>{
+              if(200) el.classList.toggle("success");
+            });
+
+          setTimeout(()=>{
+            location.href = "./menu.html";
+          }, 2000)
+        }
+        if(passConfirm.value !== password.value){
+          passConfirm.classList.toggle("erro");
+        }
+        else{
+          formComponents.forEach(el =>{
+            if(el.value === null || el.value === "" || el.value === undefined) el.classList.toggle("secErro");
+
+            if(response.status === 400) el.classList.toggle("secErro");
+          });
+        }
+
+
+      })
       .then(responseData => {
         console.log(responseData);
       })
