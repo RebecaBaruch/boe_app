@@ -9,7 +9,7 @@
 </head>
 <body>
     <section id="login">
-        <div class="circle"></div>
+        <!-- <div class="circle"></div> -->
         <header id="icon-login">
             <span class = "icon-boe"></span>
         </header>
@@ -17,8 +17,8 @@
             <h1>Bem-vindo</h1>
             <p>de volta</p>
         </div>
-        <div id="form-login">
-            <form action="#">
+        <form action="#" id="loginForm">
+            <div id="form-login">
                 <div>
                     <label for="email">E-mail</label>
                     <input type="text" id="email" /> 
@@ -28,18 +28,19 @@
                     <input type="password" id="password" /> 
                 </div>
 
-            </form>
-            <a href="#">Esqueci minha senha</a>
-            <button id="button-login">Log in</button>
-            <div id="login-registre">
-            <p>Não possui uma conta ainda?</p>
-            <a href="./signup.html">Registre-se</a>
+                <a href="#">Esqueci minha senha</a>
+                <button id="button-login">Log in</button>
+                <div id="login-registre">
+                    <p>Não possui uma conta ainda?</p>
+                    <a href="./signup.html">Registre-se</a>
+                </div>
             </div>
-        </div>
+        </form>
 
 
     </section>
     
     <script src="./assets/js/loginCircle.js" type="text/javascript"></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 </html>
