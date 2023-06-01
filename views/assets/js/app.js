@@ -1,13 +1,14 @@
 const menuBtn = document.querySelector(".hiddenMenuBtn");
-const hiddenMenu = document.querySelector(".hiddenMenu");
-const container = document.querySelector(".container");
-const closeMenuBtn = document.querySelector(".closeMenuBtn");
 
-function toggleMenu(){
-    hiddenMenu.classList.toggle("showMenu");
-}
+if(menuBtn!==null){
+    const hiddenMenu = document.querySelector(".hiddenMenu");
+    const container = document.querySelector(".container");
+    const closeMenuBtn = document.querySelector(".closeMenuBtn");
 
-if(menuBtn && closeMenuBtn && container){
+    function toggleMenu(){
+        hiddenMenu.classList.toggle("showMenu");
+    }
+
     menuBtn.addEventListener("click", toggleMenu);
     closeMenuBtn.addEventListener("click", toggleMenu);
     container.addEventListener("click", () => {
@@ -19,7 +20,7 @@ if(menuBtn && closeMenuBtn && container){
 
 const backBtn = document.querySelectorAll(".backBtn");
 
-if(backBtn){
+if(backBtn!==null){
     backBtn.forEach(element => {
         element.addEventListener("click", ()=>{
             history.back();

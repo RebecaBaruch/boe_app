@@ -38,12 +38,12 @@ body{
 }
 
 .container{
-    width: 80%;
-    height: 90%;
     display: flex;
     justify-content: start;
     flex-direction: column;
     gap: 30px;
+    width: 80%;
+    height: 90%;
     align-items: center;
 }
 
@@ -62,6 +62,10 @@ button{
     background-color: transparent;
 }
 
+.cowListContainer{
+    margin-top: 13px;
+}
+
 .menuHeader, 
 .showBtnContainer,
 .filterContainer{
@@ -73,17 +77,26 @@ button{
 .menuHeader,
 .filterContainer{
     justify-content: space-between;
+    align-items: center;
 }
 
 .menuHeader{
     position: sticky;
     top: 0;
-    padding: 23px 10%;
+    padding: 33px 10%;
     background-color: white;
 }
 
 .menuHeader{
     position: -webkit-sticky;
+}
+
+.hiddenMenuBtn{
+    width: 12%;
+}
+
+.searchIcon{
+    width: 10%;
 }
 
 .hiddenMenu{
