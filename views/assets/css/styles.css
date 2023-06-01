@@ -344,6 +344,18 @@ main .listContainer .cowItem{
     border-radius: 7px;
 }
 
+.updateBtn{
+    padding: 23px;
+    margin-top: 23px;
+    width: 100%;
+    font-family: var(--titleFont);
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    border-radius: 9px;
+    background-color: var(--blue);
+}
+
 /*--- cowDetails.html ------------*/
 /*--- chart.js graphic --*/
 .chart-container {
