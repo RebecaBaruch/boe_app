@@ -8,7 +8,7 @@
     <title>Edit profile</title>
 </head>
 <body>
-    <form action="#" class="container editProfileContainer updateForm">
+    <form class="container editProfileContainer updateForm">
         <button type="button" class="backBtn">
             <img src="./assets/images/arrow-left.svg" alt="arrow back icon">
         </button>
@@ -26,7 +26,7 @@
                 </i>
             </label>
 
-            <input type="text" name="nameInput" class="dataInput" />
+            <input type="text" name="nameInput" class="dataInput" id="nome"/>
         </div>
         <div class="inputBox">
             <label for="">
@@ -36,7 +36,7 @@
                 </i>
             </label>
 
-            <input type="email" name="emailInput" class="dataInput" />
+            <input type="email" name="emailInput" class="dataInput" id="email"/>
         </div>
 
         <div class="passBox">
@@ -52,5 +52,6 @@
 
     </form>
     <script src="./assets/js/app.js" type="text/javascript"></script>
+    <script src="./assets/js/update.js"></script>
 </body>
 </html>

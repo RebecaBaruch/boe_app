@@ -49,39 +49,20 @@ def logInUser():
 
     return userControllers.loginUser(loginUsuario['email'], loginUsuario['senha'])
 
-@routes.route('/atualizarUsuario', methods=["GET", "POST"])
-@Authentication.RequireAuth
-def updateUserData(userToken):
-    data = request.get_json()
+@routes.route('/updateUser/<id>', methods=['GET', 'PUT'])
+def updateUser(id):
+    if request.method == 'GET':
+        return userControllers.displayUserData(id)
+    if request.method == 'PUT':
+        data = request.get_json()
 
-    userData = {
-        'name': data.get('name'),
-        'email': data.get('email'),
-        'password': data.get('password')
-    }
+        userData = {
+            'name': data.get('name'),
+            'email': data.get('email'),
+            'password': data.get('password')
+        }
 
-    if request.method == "GET":
-        return userControllers.getUserData(userToken["id"])
-    
-    if request.method == "POST":
-        errors = []
-
-        nameValidate = ValInputs.validateName(userData['name'])
-        if not nameValidate['status']:
-            errors.append(nameValidate['mensagem'])
-        
-        emailValidate = ValInputs.validateEmail(userData['email'])
-        if not emailValidate['status']:
-            errors.append(emailValidate['mensagem'])
-        
-        passwordValidate = ValInputs.validatePassword(userData['password'])
-        if not passwordValidate['status']:
-            errors.append(passwordValidate['mensagem'])
-
-        if errors:
-            return jsonify({'mensagens': errors}), 400
-
-        return userControllers.updateUserData(userToken["id"], userData['name'], userData['email'], userData['password'])
+        return userControllers.updateUser(id, userData['name'], userData['email'], userData['password'])
 
 @routes.route('/listarPositivos', methods=["GET"])
 @Authentication.RequireAuth
@@ -98,66 +79,13 @@ def getAllCases(userToken):
 def getMenuData(userToken):
     return filterControllers.getMenuData(userToken['id'])
 
-# Here starts the Ox Controllers Part
-@routes.route('/imageAnalyze/', methods=["POST"])
-@Authentication.RequireAuth
-def sendImgToAnalyze(token):
-    data = request.get_json()
+@routes.route('/getResults/<idUser>', methods=["GET"])
+def getResults(idUser):
+    return OxControllers.getResults(idUser, None)
 
-    fileReceived = data['file']
-
-    imgDecoded = base64.b64decode(fileReceived)
-
-    image = Image.open(io.BytesIO(imgDecoded))
-
-    return OxControllers.imageAnalyze(token['id'], None, image)
-
-@routes.route('/imageAnalyze/<idOx>', methods=["POST"])
-@Authentication.RequireAuth
-def analyzeRegisteredOx(token, idOx):
-    data = request.get_json()
-
-    fileReceived = data['file']
-
-    imgDecoded = base64.b64decode(fileReceived)
-
-    image = Image.open(io.BytesIO(imgDecoded))
-
-    return OxControllers.imageAnalyze(token['id'], idOx, image)
-
-@routes.route('/signupOx', methods=["POST"])
-@Authentication.RequireAuth
-def signupOx(token):
-    data = request.form
-
-    image = request.files.get('image')
-
-    oxData = {
-        'nTempIdOx': data.get("nTempIdOx"),
-        'name': data.get("name"),
-        'file': image
-    }
-
-    return OxControllers.signupOx(token['id'], None, oxData['nTempIdOx'], oxData['name'], oxData['file'])
-
-@routes.route('/signupOx/<idOx>', methods=["POST"])
-@Authentication.RequireAuth
-def updateRegisteredOx(token, idOx):
-    data = request.get_json()
-
-    fileReceived = data['file']
-
-    imgDecoded = base64.b64decode(fileReceived)
-
-    image = Image.open(io.BytesIO(imgDecoded))
-
-    oxData = {
-        'nTempIdOx': data.get("nTempIdOx"),
-        'name': data.get("name"),
-        'file': image
-    }
-
-    return OxControllers.signupOx(token['id'], idOx, oxData['nTempIdOx'], oxData['name'], oxData['file'])
+@routes.route('/getResults/<idUser>/<idOx>', methods=["GET"])
+def getUpdatedResults(idUser, idOx):
+    return OxControllers.getResults(idUser, idOx)
 
 @routes.route('/updateOx/<idGado>', methods=["GET", "POST"])
 @Authentication.RequireAuth

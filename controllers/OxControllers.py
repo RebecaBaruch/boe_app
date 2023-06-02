@@ -6,60 +6,61 @@ from controllers.utils import Cache
 
 import datetime
 
-def imageAnalyze(idUser, idOx, image):
-    collectionUser = db['usuarios']
-    collectionBoi = db['gados']
+collectionUser = db['usuarios']
+collectionBoi = db['gados']
 
-    doesUserExist = collectionUser.find_one({'_id': ObjectId(idUser)})
+def getResults(idUser, idOx):
+    findUser = collectionUser.find_one({'_id': ObjectId(idUser)})
+    countOx = collectionBoi.count_documents({'idPecuarista': idUser})
 
-    genOxNumId = collectionBoi.count_documents({'idPecuarista': idUser})
+    if findUser is not None:
+        try:
+            results = GenResults.genRandomResults()
 
-    if doesUserExist is None:
-        response = jsonify({'message': 'User not found...'})
+            tempIdOx = f'A{countOx + 1}'
+
+            saveResults = {
+                'nTempIdOx': tempIdOx,
+                'result': results['results'],
+                'date': datetime.datetime.now().date().isoformat()
+            }
+
+            Cache.cache.set('tempData', saveResults)
+
+            if idOx is None:
+                collectionBoi.insert_one({
+                    'numIdentificacao': tempIdOx,
+                    'idPecuarista': idUser
+                })
+
+                return {
+                    'nTempIdOx': tempIdOx,
+                    'results': {
+                        'percentage': results['results'],
+                        'phase': results['currentPhase'],
+                        'nextSymptons': results['symptonsPhase']
+                    }
+                }
+            else:
+                findOx = collectionBoi.find_one({'_id': ObjectId(idOx)})
+
+                return {
+                    'nIdOx': findOx['numIdentificacao'],
+                    'nameOx': findOx['nomeGado'],
+                    'results': {
+                        'percentage': results['results'],
+                        'phase': results['currentPhase'],
+                        'nextSymptons': results['symptonsPhase']
+                    }
+                }
+        except Exception as err:
+            return {'message': str(err)}
+    else:
+        response = jsonify({'message': 'Não foi possível encontrar o usuário...'})
         response.status_code = 404
         response.headers['Content-Type'] = 'application/json'
 
         return response
-    
-    sicknessResults = GenResults.genRandomResults()
-
-    try:
-        if image is not None:
-            cachedResults = {
-                'image': image,
-                'results': sicknessResults,
-                'date': datetime.datetime.now().date().isoformat()
-            }
-
-            if idOx is None:
-                Cache.cache.set('tempResults', cachedResults)
-
-                return jsonify({
-                    'nTempIdOx': f"A0{genOxNumId + 1}",
-                    'results': {
-                        'percentage': sicknessResults,
-                        # Fase e complicacoes
-                    }
-                })
-            else:
-                findOx = collectionBoi.find_one({'_id': ObjectId(idOx)})
-
-                Cache.cache.set('tempResults', cachedResults)
-
-                return jsonify({
-                    'nIdOx': findOx['numIdentificacao'],
-                    'nameOx': findOx['nomeGado'],
-                    'results': {
-                        'percentage': sicknessResults,
-                        # Fase e complicacoes
-                    }
-                })
-        else:
-                return jsonify({'message': 'Error! There is no image to analyze'}), 404
-    except Exception as err:
-        return jsonify({'message': str(err)})
-
-    
 
 def signupOx(id, idOx, tempId, name, profilePicture):
     collectionBoi = db['gados']
