@@ -4,8 +4,6 @@ from models.db import db
 from pymongo import errors
 
 import bcrypt
-import jwt
-import datetime
 
 collectionUser = db['usuarios']
 
@@ -24,10 +22,16 @@ def signupUser(name, email, password):
                 'senha': senhaHashed
             })
 
-            response = make_response(jsonify({'mensagem': 'Usuário criado com sucesso!'}), 201)
+            response = jsonify({
+                'mensagem': 'Usuário criado com sucesso!',
+                'status': 200
+            }), 200
         else:
-            response = make_response(jsonify({'mensagem': 'O e-mail fornecido já está cadastrado. Por favor, faça seu login!'}))
-        
+            response = jsonify({
+                'mensagem': 'O e-mail fornecido já está cadastrado. Por favor, faça seu login',
+                'status': 400
+            }), 400
+            
         return response
     except Exception as err:
         return jsonify({'message': str(err)})
@@ -42,28 +46,37 @@ def loginUser(email, password):
         
         try:
             if bcrypt.checkpw((password).encode('utf-8'), dbPassword):
-                payload = {
-                    'id': str(doesUserExist['_id']),
-                    'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
-                }
-
-                token = jwt.encode(payload, current_app.config['SECRET_KEY'], algorithm='HS256')
-
-                return jsonify({
-                    'userToken': token,
+                response = jsonify({
                     'userData': {
                         'id': str(doesUserExist['_id']),
                         'nome': doesUserExist['nome'],
                         'email': doesUserExist['email']
                     },
-                    'mensagem': 'Usuário logado com sucesso!'
-                }), 200
+                    'mensagem': 'Usuário logado com sucesso!',
+                    'status': 200
+                })
+                response.status_code = 200
+
+                return response
             else:
-                return make_response(jsonify({'mensagem': 'Email ou senha incorretos...'}), 400)
+                response = jsonify({
+                    'mensagem': 'E-mail ou senha incorretos...',
+                    'status': 400
+                }), 400
+                return response
         except UnicodeDecodeError:
-            return make_response(jsonify({'mensagem': 'Erro ao decodificar a senha do usuário.'}), 500)
+            response = jsonify({
+                'mensagem': 'Erro ao decodificar a senha do usuário',
+                'status': 500
+            }), 500
+            return response
     else:
-        return make_response(jsonify({'mensagem': 'Usuário não encontrado. Por favor, cadastre-se primeiramente.'}), 404)
+        response = jsonify({
+            'mensagem': 'Usuário não encontrado. Por favor, cadastre-se primeiramente.',
+            'status': 404
+        }), 404
+
+        return response
 
 def displayUserData(id):
     findUser = collectionUser.find_one({'_id': ObjectId(id)})
@@ -74,12 +87,19 @@ def displayUserData(id):
                 'id': str(findUser['_id']),
                 'name': findUser['nome'],
                 'email': findUser['email'],
-                'password': 'P4TTERN-PASS'
-            })
+                'password': 'P4TTERN-PASS',
+                'status': 200
+            }), 200
         except Exception as err:
-            return jsonify({'message': str(err)})
+            return jsonify({
+                'message': str(err),
+                'status': 400
+            }), 400
     else:
-        response = jsonify({'message': 'Não foi possível encontrar o usuário...'})
+        response = jsonify({
+            'message': 'Não foi possível encontrar o usuário...',
+            'status': 404
+        })
         response.status_code = 404
         response.headers['Content-Type'] = 'application/json'
 
@@ -99,22 +119,30 @@ def updateUser(id, name, email, password):
 
                 collectionUser.update_one({'_id': ObjectId(id)}, {'$set': {'nome': name, 'email': email, 'senha': pwHashed}})
             
-            response = jsonify({'message': 'Dados atualizados com sucesso'})
+            response = jsonify({
+                'message': 'Dados atualizados com sucesso',
+                'status': 201
+            })
             response.status_code = 201
 
             return response
         except errors.ConnectionFailure:
             return jsonify({
                 'message': 'Conexão com base de dados falhou...',
-                'description': 'Sinto muito! Houve uma falha em nossa base de dados.'
+                'description': 'Sinto muito! Houve uma falha em nossa base de dados.',
+                'status': 500
             }), 500
         except errors.OperationFailure:
             return jsonify({
                 'message': 'Operação do PyMongo falhou...',
-                'description': 'Sinto muito! Não foi possível concluir a operação'
-            })
+                'description': 'Sinto muito! Não foi possível concluir a operação',
+                'status': 500
+            }), 500
     else:
-        response = jsonify({'message': 'Não foi possível encontrar o usuário...'})
+        response = jsonify({
+            'message': 'Não foi possível encontrar o usuário...',
+            'status': 404
+        })
         response.status_code = 404
         response.headers['Content-Type'] = 'application/json'
 

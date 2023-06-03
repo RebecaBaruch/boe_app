@@ -16,16 +16,16 @@ loginForm.addEventListener("submit", (e)=>{
             password: passUser.value
         })  
     })
-    .then(response => {
-        response.json();
-        console.log(response.status);
-        if(response.status===200)location.href = './menu.html';
-        if(response.status!==200){
+    .then(response => response.json())
+    .then(responseData => {
+        if(responseData.status===200)location.href = './menu.html';
+        if(responseData.status!==200){
             user.classList.toggle('erro');
             passUser.classList.toggle('erro');
         }
-    })
-    .then(responseData => {
+
+        localStorage.setItem('id', responseData.userData.id)
+
         console.log(responseData.mensagem);
     })
     .catch(error => {

@@ -27,12 +27,13 @@ formSignup.addEventListener("submit", (e) =>{
           confirmPassword: password.value
         })
       })
-      .then(response => {
-        response.json();
-        console.log(response.status);
-        if(response.status === 200 && passConfirm.value === password.value){
+      .then(response => response.json())
+      .then(responseData => {
+        console.log(responseData)
+        console.log(responseData.status);
+        if(responseData.status === 200 && passConfirm.value === password.value){
 
-          console.log(response.status);
+          console.log(responseData.status);
 
           formComponents.forEach(el =>{
               if(200) el.classList.toggle("success");
@@ -49,14 +50,9 @@ formSignup.addEventListener("submit", (e) =>{
           formComponents.forEach(el =>{
             if(el.value === null || el.value === "" || el.value === undefined) el.classList.toggle("secErro");
 
-            if(response.status === 400) el.classList.toggle("secErro");
+            if(responseData.status === 400) el.classList.toggle("secErro");
           });
         }
-
-
-      })
-      .then(responseData => {
-        console.log(responseData);
       })
       .catch(error => {
         console.log(error)
