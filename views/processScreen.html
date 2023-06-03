@@ -66,11 +66,13 @@
                     console.log(width);
                     progressContent.classList.toggle("progressContent");
 
-                    photoImg.src = "./assets/images/phProcess02.svg";
+                    setTimeout(() =>{
+                        photoImg.src = "./assets/images/phProcess02.svg";
+                    }, 700)
 
                     setTimeout(() =>{
                         window.location.href = "./posanalise.html"
-                    }, 1300)
+                    }, 2300)
                     
                 } else {
                     width++; 
