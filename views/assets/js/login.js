@@ -1,3 +1,5 @@
+localStorage.removeItem('id');
+
 const user = document.querySelector("#email");
 const passUser = document.querySelector("#password");
 

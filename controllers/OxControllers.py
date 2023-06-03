@@ -38,7 +38,9 @@ def getResults(idUser, idOx):
                     'results': {
                         'percentage': results['results'],
                         'phase': results['currentPhase'],
-                        'nextSymptons': results['symptonsPhase']
+                        'nextSymptons': results['symptonsPhase'],
+                        'level': results['level'],
+                        'details': results['details']
                     }
                 }
             else:
