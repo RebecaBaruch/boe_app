@@ -26,9 +26,9 @@ def getPositiveCases(id):
         for dados in getBois:
             for historico in dados['historico']:
                 historicoDate = datetime.datetime.strptime(historico['date'], '%Y-%m-%d').date()
-                historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
-                historico['imageAnalyzed']['img'] = historicoImage
-                if historico['resultado'] > 70:
+                # historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
+                # historico['imageAnalyzed']['img'] = historicoImage
+                if historico['results'] > 50:
                     diferenca = abs(historicoDate - dataAtual)
                     if diferenca < diferencaMinima:
                         diferencaMinima = diferenca
@@ -37,7 +37,7 @@ def getPositiveCases(id):
             dadosBoi = {
                 'id': str(dados['_id']),
                 'nome': dados['nomeGado'],
-                'fotoPerfil': dados['fotoPerfil'],
+                'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
                 'status': dados['status'],
                 'historicoRecente': historicoBoi
             }
@@ -68,8 +68,8 @@ def getAllCases(id):
         for dados in getBois:
             for historico in dados['historico']:
                 historicoDate = datetime.datetime.strptime(historico['date'], '%Y-%m-%d').date()
-                historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
-                historico['imageAnalyzed']['img'] = historicoImage
+                # historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
+                # historico['imageAnalyzed']['img'] = historicoImage
                 diferenca = abs(historicoDate - dataAtual)
                 if diferenca < diferencaMinima:
                     diferencaMinima = diferenca

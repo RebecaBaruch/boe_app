@@ -64,18 +64,15 @@ def updateUser(id):
 
         return userControllers.updateUser(id, userData['name'], userData['email'], userData['password'])
 
-@routes.route('/listarPositivos', methods=["GET"])
-@Authentication.RequireAuth
-def getPositiveCases(userToken):
-    return filterControllers.getPositiveCases(userToken['id'])
+@routes.route('/listarPositivos/<idUser>', methods=["GET"])
+def getPositiveCases(idUser):
+    return filterControllers.getPositiveCases(idUser)
 
-@routes.route('/listarGados', methods=["GET"])
-@Authentication.RequireAuth
-def getAllCases(userToken):
-    return filterControllers.getAllCases(userToken['id'])
+@routes.route('/listarGados/<idUser>', methods=["GET"])
+def getAllCases(idUser):
+    return filterControllers.getAllCases(idUser)
 
 @routes.route('/menu', methods=["GET"])
-@Authentication.RequireAuth
 def getMenuData(userToken):
     return filterControllers.getMenuData(userToken['id'])
 
