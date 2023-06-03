@@ -87,6 +87,33 @@ def getResults(idUser):
 def getUpdatedResults(idUser, idOx):
     return OxControllers.getResults(idUser, idOx)
 
+@routes.route('/signupCow/<idUser>', methods=['GET', 'POST'])
+def signupCow(idUser):
+    if request.method == 'GET':
+        return OxControllers.getCow()
+    if request.method == 'POST':
+
+        cowData = {
+            'nameCow': request.form['cowName'],
+            'image': request.files['picInput']
+        }
+
+        return OxControllers.signupCow(idUser, None, cowData['image'], cowData['nameCow'])
+
+@routes.route('/signupCow/<idUser>/<idCow>', methods=['GET', 'POST'])
+def signupExistingCow(idUser, idCow):
+    if request.method == 'GET':
+        return OxControllers.getCow()
+    if request.method == 'POST':
+
+        cowData = {
+            'nTempId': request.form['tempIdCow'],
+            'nameCow': request.form['name'],
+            'image': request.files['image']
+        }
+
+        return OxControllers.signupCow(idUser, idCow, cowData['image'], cowData['nTempId'], cowData['nameCow'])
+
 @routes.route('/updateOx/<idGado>', methods=["GET", "POST"])
 @Authentication.RequireAuth
 def updateOx(idGado, data):
