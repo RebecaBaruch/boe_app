@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Cow Register</title>
+</head>
+<body>
+    <div class="container cowRegisContainer">
+        <form class="cowRegisterForm">
+            <div class="cowRegisterContent">
+                <div class="choosePicBox">
+                    <div class="cowPic">
+                        <label for="picInput" class="picLabel">
+                            <div class="picBox">
+                                <img src="./assets/images/image.svg" alt="">
+                            </div>
+                        </label>
+                        <input type="file" name="picInput" id="picInput" class="picInput">
+                    </div>
+                    <i class="uploadIcon">
+                        <img src="" alt="">
+                    </i>
+                </div>
+                <div class="infoBox">
+                    <h1 class="cowId">AI0234</h1>
+                    <input type="text" value="Nome" name="cowName" id="cowName" class="cowNameInput">
+                </div>
+                <div class="resultBox">
+                    <div class="perGrafico">90%</div>
+                    <h1>de chance de infecção</h1>
+                    <i class="dropdownIcon">
+                        <img src="./assets/images/chevron-down.svg" alt="">
+                    </i>
+                </div>
+            </div>
+            <button type="button" class="saveCowBtn">
+                Salvar análise
+            </button>
+        </form>
+    </div>
+</body>
+</html>

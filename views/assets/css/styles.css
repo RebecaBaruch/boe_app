@@ -689,3 +689,106 @@ main .listContainer .cowItem{
     border-radius: 50%;
     background-color: white;
 }
+
+/*cowRegister.html*/
+.cowRegisContainer,
+.cowRegisterForm,
+.cowRegisterContent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+.cowRegisContainer{
+    height: 100vh;
+}
+
+.cowRegisterForm{
+    gap: 143px;
+    height: 80%;
+}
+
+.cowRegisterContent{
+    gap: 43px;
+    align-items: center;
+    width: 100%;
+}
+
+.cowPic .picLabel .picBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+    background-color: rgb(179, 179, 179);
+}
+
+.picLabel .picBox img{
+    width: 63%;
+}
+
+.cowPic .picInput{
+    display: none;
+}
+
+.cowRegisterContent .infoBox{
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    width: 100%;
+}
+
+.infoBox h1{
+    font-size: 1.3rem;
+}
+
+.infoBox input{
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #bdbdbd;
+    font-size: 1.2rem;
+    color: var(--gray);
+}
+
+.cowRegisterContent .resultBox{
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    gap: 13px;
+    align-items: center;
+    padding: 13px;
+    width: 100%;
+    
+    border-radius: 10px;
+    border-bottom: 11px solid var(--gray);
+    font-size: .4rem;
+    text-decoration: none;
+    color: var(--black);
+    background-color: white;
+    box-shadow: 0px 4px 13px rgba(0, 98, 119, 0.1);
+}
+
+.resultBox .perGrafico{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 4px solid #FF5454;
+    border-radius: 50%;
+    align-self: center;
+    font-size: .93rem;
+    font-weight: 600;
+}
+
+.cowRegisterForm .saveCowBtn{
+    padding: 23px;
+    width: 100%;
+    border-radius: 13px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    background-color: var(--blue);
+}
