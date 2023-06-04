@@ -14,7 +14,6 @@ def getPositiveCases(id):
 
     boisFiltrados = []
     dadosBoi = None
-    historicoBoi = None
 
     if doesUserExist is not None:
 
@@ -25,27 +24,24 @@ def getPositiveCases(id):
             ]
         })
 
-        dataAtual = date.today()
-        diferencaMinima = timedelta(days=365)
-
         for dados in getBois:
-            for historico in dados['historico']:
-                historicoDate = datetime.datetime.strptime(historico['date'], '%Y-%m-%d').date()
-                # historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
-                # historico['imageAnalyzed']['img'] = historicoImage
-                if historico['results'] > 50:
-                    diferenca = abs(historicoDate - dataAtual)
-                    if diferenca < diferencaMinima:
-                        diferencaMinima = diferenca
-                        historicoBoi = historico
-            
-            dadosBoi = {
-                'id': str(dados['_id']),
-                'nome': dados['nomeGado'],
-                'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
-                'status': dados['status'],
-                'historicoRecente': historicoBoi
-            }
+
+            if dados['historico'][len(dados['historico']) - 1]['results'] > 50:            
+                dadosBoi = {
+                    'id': str(dados['_id']),
+                    'nome': dados['nomeGado'],
+                    'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
+                    'status': dados['status'],
+                    'historicoBoi': dados['historico'][len(dados['historico']) - 1]['results']
+                }
+            else:
+                dadosBoi = {
+                    'id': str(dados['_id']),
+                    'nome': dados['nomeGado'],
+                    'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
+                    'status': dados['status'],
+                    'historicoBoi': None
+                }
 
             boisFiltrados.append(dadosBoi)
         
@@ -61,7 +57,6 @@ def getAllCases(id):
 
     boisFiltrados = []
     dadosBoi = None
-    historicoBoi = None
 
     if doesUserExist is not None:
         
@@ -72,19 +67,7 @@ def getAllCases(id):
             ]
         })
 
-        dataAtual = date.today()
-        diferencaMinima = timedelta(days=365)
-
         for dados in getBois:
-            for historico in dados['historico']:
-                historicoDate = datetime.datetime.strptime(historico['date'], '%Y-%m-%d').date()
-                # historicoImage = base64.b64encode(historico['imageAnalyzed']['img']).decode('utf-8')
-                # historico['imageAnalyzed']['img'] = historicoImage
-                diferenca = abs(historicoDate - dataAtual)
-                if diferenca < diferencaMinima:
-                    diferencaMinima = diferenca
-                    historicoBoi = historico
-            
             fotoPerfil = base64.b64encode(dados['fotoPerfil']).decode('utf-8')
             
             dadosBoi = {
@@ -92,7 +75,7 @@ def getAllCases(id):
                 'nome': dados['nomeGado'],
                 'fotoPerfil': fotoPerfil,
                 'status': dados['status'],
-                'historicoRecente': historicoBoi
+                'historicoRecente': dados['historico'][len(dados['historico']) - 1]['results']
             }
 
             boisFiltrados.append(dadosBoi)
