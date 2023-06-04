@@ -513,7 +513,7 @@ footer{
   position: relative;
   background-color: #FF5454;
   padding: 100px 40px;
-  gap: 73px;
+  gap: 43px;
   height: 100%;
 }
 
@@ -536,7 +536,7 @@ footer{
   display: flex;
   justify-content: start;
   flex-direction: column;
-  gap: 103px;
+  gap: 73px;
   height: 100%;
   z-index: 11;
 }
@@ -556,7 +556,9 @@ footer{
   display: flex;
   justify-content: start;
   flex-direction: column;
-  gap: 12px;
+  align-items: start;
+  gap: 13px;
+  width: 70%;
 }
 
 .txtResult{
@@ -574,7 +576,7 @@ footer{
   border: 4px solid #FF5454;
   border-radius: 50%;
   align-self: center;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 600;
 }
 
@@ -582,6 +584,8 @@ footer{
   display: flex;
   flex-direction: column;
   align-items: start;
+  gap: 13px;
+  height: 100px;
 }
 
 .tituloBox{
@@ -596,13 +600,13 @@ footer{
 }
 
 #button-cadastrar{
-  background-color: var(--bgComponents);
   padding: 23px;
   width: 100%;
   color: #fff;
   border-radius: 10px;
   border: none;
   font-size: 18px;   
+  background-color: var(--bgComponents);
   z-index: 11;
 }
 

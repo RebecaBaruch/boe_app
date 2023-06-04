@@ -11,11 +11,13 @@ if(menuBtn!==null){
 
     menuBtn.addEventListener("click", toggleMenu);
     closeMenuBtn.addEventListener("click", toggleMenu);
-    container.addEventListener("click", () => {
-        if(hiddenMenu.classList.contains("showMenu")) {
-            toggleMenu()
-        }
-    });
+    if(container!==null){
+        container.addEventListener("click", () => {
+            if(hiddenMenu.classList.contains("showMenu")) {
+                toggleMenu()
+            }
+        });
+    }
 }
 
 const backBtn = document.querySelectorAll(".backBtn");

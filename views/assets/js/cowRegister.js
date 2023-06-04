@@ -27,9 +27,13 @@ formRegister.addEventListener('submit', (e) => {
     method: 'POST',
     body: formData
   })
-  .then(response => response.json())
+  .then(response =>{
+    response.json()
+    if (response.status == 201) location.href = './cowList.html';
+  })
+
   .then(responseData => {
-    if (responseData.status == 201) location.href('./menu.html')
+    console.log(responseData)
   })
   .catch(error => {
     console.log(error)

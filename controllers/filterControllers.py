@@ -17,8 +17,13 @@ def getPositiveCases(id):
     historicoBoi = None
 
     if doesUserExist is not None:
-        
-        getBois = collectionBoi.find({'idPecuarista': id})
+
+        getBois = collectionBoi.find({
+            '$and': [
+                {'idPecuarista': id},
+                {'historico': {'$exists': True}}
+            ]
+        })
 
         dataAtual = date.today()
         diferencaMinima = timedelta(days=365)
