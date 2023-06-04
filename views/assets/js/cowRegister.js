@@ -11,7 +11,7 @@ fetch('http://127.0.0.1:5000/signupCow/' + idUser, {
 .then(responseData => {
   console.log(responseData)
   cowId.textContent = responseData.tempIdCow;
-  perGrafico.innerHTML = responseData.results;
+  perGrafico.innerHTML = responseData.results + "%";
 })
 .catch(error => {
   console.log(error)
