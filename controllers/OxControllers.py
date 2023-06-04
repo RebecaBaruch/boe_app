@@ -1,10 +1,14 @@
-from flask import jsonify
+from flask import Flask, jsonify
 from bson import ObjectId, Binary
 
 import datetime
 import base64
 import numpy as np
 import cv2
+
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
 
 from controllers.utils.functions import GenResults
 from controllers.utils import Cache
@@ -176,6 +180,10 @@ def rotateImage(image):
         '.jpeg': 'JPEG',
         '.gif': 'GIF'
     }
+
+    image_bytes = base64.b64decode(image)
+    nparr = np.frombuffer(image_bytes, np.uint8)
+    image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     height, width = image.shape[:2]
 

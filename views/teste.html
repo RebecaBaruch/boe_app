@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 9999;
+      }
+      
+      #edited-image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      
+        
+</style>
+<body>
+    <input type="file" id="input-file" onchange="showImage(event)">
+    </div>
+    <div id="overlay" style="display: none;">
+        <img id="selected-image">
+        <button onclick="chooseImage()">Usar foto</button>
+        <button onclick="rotateImage()">Rotacionar Imagem</button>
+    </div>
+    <div id="edited-image-container" style="display: none;">
+        <img id="edited-image">
+    </div>
+    <button onclick="saveImage()">Salvar</button>
+    </div>
+
+    <script>
+        var selectedImage;
+        var editedImage;
+        
+        function showImage(event) {
+          var input = event.target;
+          var reader = new FileReader();
+        
+          function showOverlay(){
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = 'block';
+
+            var img = document.getElementById('selected-image');
+
+            reader.onload = function(){
+                img.src = reader.result;
+            }
+            selectedImage = img;
+          }
+          
+          showOverlay();
+          reader.readAsDataURL(input.files[0]);
+        }
+        
+        function rotateImage() {
+            function convertImageToBase64(file, callback) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    callback(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Exemplo de uso
+            var inputElement = document.getElementById('input-file'); // Elemento de input de arquivo
+            var file = inputElement.files[0];
+            
+            convertImageToBase64(file, function(base64Image) {
+            // Aqui você pode enviar a imagem base64 para onde precisar
+
+                fetch('http://127.0.0.1:5000/rotateImage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                        },
+                    body: JSON.stringify({
+                        'image': btoa(base64Image)
+                    })
+                })
+                .then(response => response.json())
+                .then(responseData => {
+                    console.log(responseData);
+                })
+                .catch(error => {
+                    console.log(error)
+                });   
+            });
+
+        }
+        
+        
+        function chooseImage() {
+          // Aqui você pode enviar a imagem para a página ou realizar outras ações necessárias
+          overlay.style.display = 'none';
+
+          const editedImgContainer = document.getElementById("edited-image-container");
+          editedImgContainer.style.display = 'block';
+
+          const editedImage = document.getElementById('edited-image');
+          editedImage.src = selectedImage.src;
+
+        }
+    </script>
+</body>
+</html>
