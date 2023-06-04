@@ -1,11 +1,12 @@
 from controllers import filterControllers, OxControllers, userControllers
 from controllers.utils.functions import ValInputs
 from controllers.utils.security import Authentication
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, json
 from PIL import Image
 
 import base64
 import io
+import numpy as np
 
 routes = Blueprint('routes', __name__)
 
@@ -118,3 +119,19 @@ def updateOx(idGado, data):
         return OxControllers.getOxInfo(idGado)
     if request.method == 'POST':
         return OxControllers.updateOx(idGado, data)
+    
+@routes.route('/rotateImage', methods=['POST'])
+def rotateImage():
+    image = request.files['image']
+
+    imgPil = Image.open(io.BytesIO(image.read()))
+
+    imgArray = np.array(imgPil)
+
+    rotatedImage = OxControllers.rotateImage(imgArray)
+
+    responseData = {
+        'imgRotated': rotatedImage
+    }
+
+    return json.dumps(responseData), 200, {'Content-Type': 'application/json'}
