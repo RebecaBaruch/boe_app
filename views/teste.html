@@ -65,7 +65,9 @@
         }
         
         function rotateImage() {
-            img = localStorage.getItem('imgBase64');
+            var img = document.getElementById('selected-image');
+
+            // img = localStorage.getItem('imgBase64');
 
             fetch('http://127.0.0.1:5000/rotateImage', {
                 method: 'POST',
@@ -73,7 +75,7 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    'image': img
+                    'image': img.src
                 })
             })
             .then(response => {
@@ -82,7 +84,6 @@
                 return response.json()
             })
             .then(responseData => {
-                var img = document.getElementById('selected-image');
                 img.src = responseData.imgRotacionada
             })
             .catch(error => {
