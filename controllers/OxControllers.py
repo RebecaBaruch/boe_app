@@ -1,10 +1,16 @@
-from flask import jsonify
+from flask import Flask, jsonify
 from bson import ObjectId, Binary
+from PIL import Image
 
 import datetime
 import base64
 import numpy as np
 import cv2
+import io
+
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
 
 from controllers.utils.functions import GenResults
 from controllers.utils import Cache
@@ -169,38 +175,63 @@ def updateOx(idOx, data):
     
     collectionOx.update_one({'_id': ObjectId(idOx)}, {'$set': {'status': data.get('status')}})
 
-def rotateImage(image):
-    EXTENSION_FORMAT_MAP = {
-        '.png': 'PNG',
-        '.jpg': 'JPEG',
-        '.jpeg': 'JPEG',
-        '.gif': 'GIF'
-    }
+# def rotateImage(image):
+#     EXTENSION_FORMAT_MAP = {
+#         '.png': 'PNG',
+#         '.jpg': 'JPEG',
+#         '.jpeg': 'JPEG',
+#         '.gif': 'GIF'
+#     }
 
-    height, width = image.shape[:2]
+#     image_bytes = base64.b64decode(image)
+#     nparr = np.frombuffer(image_bytes, np.uint8)
+#     image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-    center = (width/2, height/2)
+#     height, width = image.shape[:2]
 
-    matrixRotation = cv2.getRotationMatrix2D(center, 180, 1.0)
+#     center = (width/2, height/2)
 
-    rotatedImage = cv2.warpAffine(image, matrixRotation, (width, height), borderValue=(255, 255, 255))
+#     matrixRotation = cv2.getRotationMatrix2D(center, 180, 1.0)
 
-    rotatedCenter = np.dot(matrixRotation, [center[0], center[1], 1])
+#     rotatedImage = cv2.warpAffine(image, matrixRotation, (width, height), borderValue=(255, 255, 255))
 
-    xDist = center[0] - rotatedCenter[0]
-    yDist = center[1] - rotatedCenter[1]
+#     rotatedCenter = np.dot(matrixRotation, [center[0], center[1], 1])
 
-    translationMatrix = np.float32([[1, 0, xDist], [0, 1, yDist]])
+#     xDist = center[0] - rotatedCenter[0]
+#     yDist = center[1] - rotatedCenter[1]
 
-    translatedImage = cv2.warpAffine(rotatedImage, translationMatrix, (width, height), borderValue=(255, 255, 255))
+#     translationMatrix = np.float32([[1, 0, xDist], [0, 1, yDist]])
 
-    translatedImage = cv2.cvtColor(translatedImage, cv2.COLOR_BGR2RGB)
+#     translatedImage = cv2.warpAffine(rotatedImage, translationMatrix, (width, height), borderValue=(255, 255, 255))
 
-    dtype_name = image.dtype.name.lower()
-    file_extension = next((ext for ext, fmt in EXTENSION_FORMAT_MAP.items() if fmt.lower() == dtype_name), '.png')
-    file_format = EXTENSION_FORMAT_MAP.get(file_extension, 'PNG')
+#     translatedImage = cv2.cvtColor(translatedImage, cv2.COLOR_BGR2RGB)
 
-    retval, buffer = cv2.imencode(file_extension, translatedImage)
-    imageBase64 = base64.b64encode(buffer).decode('utf-8')
+#     dtype_name = image.dtype.name.lower()
+#     file_extension = next((ext for ext, fmt in EXTENSION_FORMAT_MAP.items() if fmt.lower() == dtype_name), '.png')
+#     file_format = EXTENSION_FORMAT_MAP.get(file_extension, 'PNG')
 
-    return imageBase64
+#     retval, buffer = cv2.imencode(file_extension, translatedImage)
+#     imageBase64 = base64.b64encode(buffer).decode('utf-8')
+
+#     return imageBase64
+
+def rotateImage(img):
+    imgBytes = base64.b64decode(img.split(",")[-1])
+
+    imgPil = Image.open(io.BytesIO(imgBytes))
+
+    image = np.array(imgPil)
+
+    height, width = image.shape[0], image.shape[1]
+
+    matrix = cv2.getRotationMatrix2D((width / 2, height / 2), 180, 1.0)
+
+    imgRotated = cv2.warpAffine(image, matrix, (width, height))
+
+    rgb = cv2.cvtColor(imgRotated, cv2.COLOR_BGR2RGB)
+
+    _, imgBase64 = cv2.imencode("." + imgPil.format.lower(), rgb)
+
+    imgBase64 = "data:image/" + imgPil.format.lower() + ";base64," + base64.b64encode(imgBase64).decode('utf-8')
+
+    return imgBase64

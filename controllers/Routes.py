@@ -122,22 +122,14 @@ def updateOx(idGado, data):
     
 @routes.route('/rotateImage', methods=['POST'])
 def rotateImage():
-    data = request.get_json()
+    data = request.json
 
-    imageB64 = data['image']
+    imgBase = data['image']
 
-    imgBytes = base64.b64decode(imageB64)
+    rotatedImage = OxControllers.rotateImage(imgBase)
 
-    imgPil = Image.open(io.BytesIO(imgBytes))
-
-    imgArray = np.array(imgPil)
-
-    rotatedImage = OxControllers.rotateImage(imgArray)
-
-    rotatedImageB64 = base64.b64encode(rotatedImage).decode('utf-8')
-
-    responseData = {
-        'imgRotated': rotatedImageB64
-    }
-
-    return json.dumps(responseData), 200, {'Content-Type': 'application/json'}
+    return jsonify({
+        'message': 'Imagem rotacionada',
+        'imgRotacionada': rotatedImage,
+        'status': 201
+    })
