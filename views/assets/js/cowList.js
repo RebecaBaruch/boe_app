@@ -11,11 +11,7 @@ btnPositive.addEventListener('click', () => {
   fetch('http://127.0.0.1:5000/listarPositivos/' + idUser, {
     method: 'GET'
   })
-  .then(response => {
-    console.log(response);
-
-    return response.json()
-  })
+  .then(response => response.json())
   .then(responseData => {
     console.log(responseData)
     // Para pegar apenas os bois que deram positivo, tem que verificar se histórico é diferente de nulo
@@ -30,10 +26,7 @@ btnListAll.addEventListener('click', () => {
   fetch('http://127.0.0.1:5000/listarGados/' + idUser, {
     method: 'GET'
   })
-  .then(response => {
-    response.json();
-    console.log(response)
-  })
+  .then(response => response.json())
   .then(responseData => {
     console.log(responseData)
   })
