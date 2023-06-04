@@ -168,3 +168,39 @@ def updateOx(idOx, data):
         return jsonify({'mensagem': 'Não foi possível encontrar o gado selecionado'}, 400)
     
     collectionOx.update_one({'_id': ObjectId(idOx)}, {'$set': {'status': data.get('status')}})
+
+def rotateImage(image):
+    EXTENSION_FORMAT_MAP = {
+        '.png': 'PNG',
+        '.jpg': 'JPEG',
+        '.jpeg': 'JPEG',
+        '.gif': 'GIF'
+    }
+
+    height, width = image.shape[:2]
+
+    center = (width/2, height/2)
+
+    matrixRotation = cv2.getRotationMatrix2D(center, 180, 1.0)
+
+    rotatedImage = cv2.warpAffine(image, matrixRotation, (width, height), borderValue=(255, 255, 255))
+
+    rotatedCenter = np.dot(matrixRotation, [center[0], center[1], 1])
+
+    xDist = center[0] - rotatedCenter[0]
+    yDist = center[1] - rotatedCenter[1]
+
+    translationMatrix = np.float32([[1, 0, xDist], [0, 1, yDist]])
+
+    translatedImage = cv2.warpAffine(rotatedImage, translationMatrix, (width, height), borderValue=(255, 255, 255))
+
+    translatedImage = cv2.cvtColor(translatedImage, cv2.COLOR_BGR2RGB)
+
+    dtype_name = image.dtype.name.lower()
+    file_extension = next((ext for ext, fmt in EXTENSION_FORMAT_MAP.items() if fmt.lower() == dtype_name), '.png')
+    file_format = EXTENSION_FORMAT_MAP.get(file_extension, 'PNG')
+
+    retval, buffer = cv2.imencode(file_extension, translatedImage)
+    imageBase64 = base64.b64encode(buffer).decode('utf-8')
+
+    return imageBase64
