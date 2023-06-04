@@ -30,6 +30,7 @@ body{
     width: 100vw;
     height: 100vh;
     font-family: var(--titleFont);
+    overflow-x: hidden;
 }
 
 .nav-footer{
@@ -83,7 +84,7 @@ button{
 .menuHeader{
     position: sticky;
     top: 0;
-    padding: 33px 10%;
+    padding: 43px 10%;
     background-color: white;
 }
 
@@ -91,12 +92,9 @@ button{
     position: -webkit-sticky;
 }
 
-.hiddenMenuBtn{
-    width: 12%;
-}
-
-.searchIcon{
-    width: 10%;
+.hiddenMenuBtn img,
+.searchIcon img{
+    width: 33px;
 }
 
 .hiddenMenu{
