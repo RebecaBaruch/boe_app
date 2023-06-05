@@ -110,7 +110,12 @@ def signupCow(idUser, idCow, image, name):
             imgBytes = image.read()
 
             collectionBoi.update_one(
-                {'numIdentificacao': tempData['nTempIdOx']},
+                {
+                    '$and': [
+                        {'idPecuarista': idUser},
+                        {'numIdentificacao': tempData['nTempIdOx']}
+                    ]
+                },
                 {'$set': {
                     'nomeGado': name,
                     'fotoPerfil': Binary(imgBytes),

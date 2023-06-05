@@ -73,9 +73,9 @@ def getPositiveCases(idUser):
 def getAllCases(idUser):
     return filterControllers.getAllCases(idUser)
 
-@routes.route('/menu', methods=["GET"])
-def getMenuData(userToken):
-    return filterControllers.getMenuData(userToken['id'])
+@routes.route('/menu/idUser', methods=["GET"])
+def getMenuData(idUser):
+    return filterControllers.getMenuData(idUser)
 
 @routes.route('/getResults/<idUser>', methods=["GET"])
 def getResults(idUser):

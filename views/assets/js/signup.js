@@ -31,6 +31,7 @@ formSignup.addEventListener("submit", (e) =>{
       })
       .then(response => response.json())
       .then(responseData => {
+        localStorage.setItem('id', responseData.idUsuario)
         console.log(responseData)
         console.log(responseData.status);
         if(responseData.status === 200 && passConfirm.value === password.value){

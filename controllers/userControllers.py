@@ -22,8 +22,11 @@ def signupUser(name, email, password):
                 'senha': senhaHashed
             })
 
+            findUser = collection.find_one({'email': email})
+
             response = jsonify({
                 'mensagem': 'Usuário criado com sucesso!',
+                'idUsuario': str(findUser['_id']),
                 'status': 200
             }), 200
         else:

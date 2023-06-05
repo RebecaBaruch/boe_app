@@ -29,6 +29,7 @@ def getPositiveCases(id):
             if dados['historico'][len(dados['historico']) - 1]['results'] > 50:            
                 dadosBoi = {
                     'id': str(dados['_id']),
+                    'tempId': dados['numIdentificacao'],
                     'nome': dados['nomeGado'],
                     'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
                     'status': dados['status'],
@@ -37,6 +38,7 @@ def getPositiveCases(id):
             else:
                 dadosBoi = {
                     'id': str(dados['_id']),
+                    'tempId': dados['numIdentificacao'],
                     'nome': dados['nomeGado'],
                     'fotoPerfil': base64.b64encode(dados['fotoPerfil']).decode('utf-8'),
                     'status': dados['status'],
@@ -72,6 +74,7 @@ def getAllCases(id):
             
             dadosBoi = {
                 'id': str(dados['_id']),
+                'tempId': dados['numIdentificacao'],
                 'nome': dados['nomeGado'],
                 'fotoPerfil': fotoPerfil,
                 'status': dados['status'],
@@ -102,11 +105,11 @@ def getMenuData(idUser):
     if numRegisteredCases == 0:
         return jsonify({
             'userName': doesUserExist['nome'],
-            'registeredCases': None,
-            'positiveCases': None,
+            'registeredCases': 0,
+            'positiveCases': 0,
             'generalCases': {
-                'positive': None,
-                'negative': None
+                'positive': 0,
+                'negative': 0
             }
         })
     
@@ -135,10 +138,5 @@ def getMenuData(idUser):
 
     return jsonify({
         'userName': doesUserExist['nome'],
-        'registeredCases': numRegisteredCases,
-        'positiveCases': positiveCases,
-        'generalCases': {
-            'positive': sickAnimals,
-            'negative': healthyAnimals
-        }
+        'registeredCases': numRegisteredCases
     })

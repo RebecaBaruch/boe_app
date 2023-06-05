@@ -7,15 +7,32 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Cow Register</title>
 </head>
-<body>
+<body class="cowRegisterBody">
+    <div id="overlay" style="display: none;">
+        <div class="editBtns">
+            <button onclick="chooseImage()">Usar foto</button>
+            <button onclick="rotateImage()">Rotacionar Imagem</button>
+        </div>
+
+        <div class="imgBtnBox">
+            <div class="imageContainer">
+                <img id="selected-image">
+            </div>
+            <button>
+                <img src="./assets/images/rotate.svg" alt="">
+            </button>
+        </div>
+    </div>
+
     <div class="container cowRegisContainer">
         <form id="cowRegisterForm" class="cowRegisterForm" enctype="multipart/form-data">
             <div class="cowRegisterContent">
                 <div class="choosePicBox">
                     <div class="cowPic">
-                        <label for="picInput" class="picLabel">
+                        <label for="picInput" class="picLabel" onclick="clickLabel()">
                             <div class="picBox">
-                                <img src="./assets/images/image.svg" alt="">
+                                <img src="./assets/images/image.svg" alt="" id="imgIcon">
+                                <img alt="" id="imgRotated">
                             </div>
                         </label>
                         <input type="file" name="picInput" id="picInput" class="picInput">
