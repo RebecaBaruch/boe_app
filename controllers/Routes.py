@@ -73,7 +73,7 @@ def getPositiveCases(idUser):
 def getAllCases(idUser):
     return filterControllers.getAllCases(idUser)
 
-@routes.route('/menu/idUser', methods=["GET"])
+@routes.route('/menu/<idUser>', methods=["GET"])
 def getMenuData(idUser):
     return filterControllers.getMenuData(idUser)
 

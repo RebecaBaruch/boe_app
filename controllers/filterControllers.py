@@ -112,31 +112,20 @@ def getMenuData(idUser):
                 'negative': 0
             }
         })
-    
-    animalsRegistered = collectionBoi.find({'idPecuarista': idUser})
 
-    currentDate = date.today()
-    minDifference = timedelta(days=365)
+    countAnimalsId = collectionBoi.count_documents({'idPecuarista': idUser})
 
-    sickAnimals = 0
-    healthyAnimals = 0
+    countAnimalsPositive = collectionBoi.count_documents({
+        '$and': [
+            {'idPecuarista': idUser},
+            {'historico.results': {'$gt': 50}}
+        ]
+    })
 
-    for dados in animalsRegistered:
-        for historico in dados['historico']:
-            historicoDate = datetime.datetime.strptime(historico['date'], '%Y-%m-%d').date()
-            difference = abs(historicoDate - currentDate)
-            if historico['resultado'] > 70:
-                if difference < minDifference:
-                    minDifference = difference
-                    sickAnimals += 1
-            else:
-                if difference < minDifference:
-                    minDifference = difference
-                    healthyAnimals += 1
-    
-    positiveCases = (sickAnimals * 100)/numRegisteredCases
+    positiveCases = (countAnimalsPositive * 100)/countAnimalsId
 
     return jsonify({
         'userName': doesUserExist['nome'],
-        'registeredCases': numRegisteredCases
+        'registeredCases': countAnimalsId,
+        'positiveCases': round(positiveCases)
     })
