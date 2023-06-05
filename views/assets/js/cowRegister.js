@@ -43,9 +43,8 @@ formRegister.addEventListener('submit', (e) => {
 var selectedImage;
 var editedImage;
 
-function showImage(event) {
+function showImage() {
   var picInput = document.getElementById('picInput');
-  // var input = event.currentTarget;
   var reader = new FileReader();
 
   function showOverlay() {
@@ -81,8 +80,8 @@ function chooseImage() {
   imgIcon.style.display = 'none';
 
   const imgRotated = document.getElementById('imgRotated');
+  imgRotated.style.display = 'block'
   imgRotated.src = selectedImage.src;
-
 }
 
 function rotateImage() {

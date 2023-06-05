@@ -807,9 +807,9 @@ main .listContainer .cowItem{
 
 #overlay{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
-    gap: 33px;
+    gap: 123px;
     align-items: center;
     position: absolute;
     top: 0;
@@ -817,7 +817,7 @@ main .listContainer .cowItem{
     padding: 33px 10%;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.558);
+    background-color: rgba(0, 0, 0, 0.752);
     z-index: 777;
 }
 
@@ -825,7 +825,7 @@ main .listContainer .cowItem{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 33px;
+    gap: 233px;
     align-items: center;
     width: 100%;
 }
@@ -833,6 +833,28 @@ main .listContainer .cowItem{
 #overlay .editBtns button{
     font-weight: bold;
     color: white;
+}
+
+#overlay .imgBtnBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+#overlay .imgBtnBox .rttBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 33px;
+    bottom: 33px;
+    padding: 13px;
+    border-radius: 50%;
+    background: rgba(113, 113, 113, 0.67);
 }
 
 #imgRotated{
