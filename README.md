@@ -26,6 +26,6 @@ pip install flask-cors python-dotenv flask pymongo pillow numpy bson bcrypt open
 py app.py
 ```
 
-<p>Após rodar a aplicação em Python, execute a página login.html pela extensão LiveServer, por exemplo</p>
+<p>Após rodar a aplicação em Python, execute a página login.html pela extensão LiveServer, por exemplo.</p>
 
-Após todo esse processo a aplicação deve rodar normalmente
+Após todo esse processo a aplicação deve rodar normalmente.
