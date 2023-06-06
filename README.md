@@ -19,6 +19,8 @@ pip install -r Requirements.txt
 pip install flask-cors python-dotenv flask pymongo pillow numpy bson bcrypt opencv-python
 ```
 
+⚠️ É necessário ter o MongoDB Compass instalado e dentro do MongoDB criar uma base de dados: boe-app
+
 ### Como executar este projeto?
 <p>Para executar este projeto, em seu terminal do repositório, execute a aplicação em Python pelo seguinte comando:</p>
 
