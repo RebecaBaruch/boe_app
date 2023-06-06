@@ -22,6 +22,8 @@ btnPositive.addEventListener('click', () => {
         a.href = './cowDetails.html';
         a.classList.add('cowItem');
 
+        a.style.borderBottomColor = '#22DF7A';
+
         const figure = document.createElement('figure');
         figure.classList.add('cowPic');
         const img = document.createElement('img');
@@ -90,6 +92,14 @@ btnListAll.addEventListener('click', () => {
       const a = document.createElement('a');
       a.href = './cowDetails.html';
       a.classList.add('cowItem');
+
+      if(data.historicoRecente > 50) {
+        a.style.borderBottomColor = '#22DF7A'
+      } else if (data.historicoRecente == 50) {
+        a.style.borderBottomColor = '#FFEB36'
+      } else {
+        a.style.borderBottomColor = '#FF5454'
+      }
 
       const figure = document.createElement('figure');
       figure.classList.add('cowPic');

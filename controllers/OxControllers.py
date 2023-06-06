@@ -9,14 +9,6 @@ import numpy as np
 import cv2
 import io
 
-from flask_cors import CORS
-app = Flask(__name__)
-CORS(app)
-
-from flask_cors import CORS
-app = Flask(__name__)
-CORS(app)
-
 from controllers.utils.functions import GenResults
 from controllers.utils import Cache
 
