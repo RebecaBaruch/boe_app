@@ -13,4 +13,19 @@ git clone https://github.com/RebecaBaruch/boe_app.git
 pip install -r Requirements.txt
 ```
 
-<p>Caso ocorra problemas na instalação com o comando acima, aqui se encontra a lista de bibliotecas usadas no desenvolvimento da aplicação:</p>
+<p>Caso ocorra problemas na instalação com o comando acima, aqui se encontra o comando para instalar todas as bibliotecas usadas no desenvolvimento da aplicação:</p>
+
+```
+pip install flask-cors python-dotenv flask pymongo pillow numpy bson bcrypt opencv-python
+```
+
+### Como executar este projeto?
+<p>Para executar este projeto, em seu terminal do repositório, execute a aplicação em Python pelo seguinte comando:</p>
+
+```
+py app.py
+```
+
+<p>Após rodar a aplicação em Python, execute a página login.html pela extensão LiveServer, por exemplo</p>
+
+Após todo esse processo a aplicação deve rodar normalmente
