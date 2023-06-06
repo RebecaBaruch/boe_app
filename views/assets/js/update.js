@@ -4,7 +4,9 @@ const nome = document.querySelector("#nome");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 
-fetch('http://127.0.0.1:5000/updateUser/6477d0245c49dc742d2f5302', {
+const idUser = localStorage.getItem("id");
+
+fetch('http://127.0.0.1:5000/updateUser/' + idUser, {
         method: 'GET'
     })
     .then(response => response.json()) // Retorne a promessa aqui
@@ -21,7 +23,7 @@ fetch('http://127.0.0.1:5000/updateUser/6477d0245c49dc742d2f5302', {
 updateForm.addEventListener("submit", (e)=>{
     e.preventDefault();
 
-    fetch('http://127.0.0.1:5000/updateUser/6477d0245c49dc742d2f5302', {
+    fetch('http://127.0.0.1:5000/updateUser/' + idUser, {
         method: 'PUT',
         headers: {
         'Content-Type': 'application/json'

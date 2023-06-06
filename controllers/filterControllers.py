@@ -1,10 +1,8 @@
 from bson import ObjectId
-from datetime import date, timedelta
-from flask import jsonify, make_response, current_app
+from flask import jsonify
 from models.db import db
 
 import base64
-import datetime
 
 def getPositiveCases(id):
     collectionUser = db['usuarios']

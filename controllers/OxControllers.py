@@ -1,5 +1,4 @@
 from flask import Flask, jsonify
-from flask import Flask, jsonify
 from bson import ObjectId, Binary
 from PIL import Image
 
