@@ -262,6 +262,30 @@ label {
   gap: 33px;
   margin-bottom: 13px;
 }
+
+.marked{
+  display: flex;
+}
+
+.unMarked{
+  display: none;
+}
+
+.navIcon{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 13;
+  align-items: center;
+}
+
+.point{
+  width: 13px;
+  height: 4px;
+  border-radius: 1px;
+  background-color: #282FD9;
+}
+
 #icon-menu{
   padding-bottom: 20px;
   display: flex;
@@ -271,14 +295,12 @@ label {
 }
 .icon-boe-menu{
   background: url(../images/icon-boe.svg) no-repeat;
-  display: block;
   width: 1.8em;
   height: 2.1em;
 
 }
 .icon-menu-lateral{
   background: url(../images/icon-menu.svg) no-repeat;
-  display: block;
   width: 1.8em;
   height: 2.2em;
 }
@@ -286,7 +308,6 @@ label {
 #title-menu{
   display: flex;
   font-size: 16px;
-
 }
 
 #title-menu p{
