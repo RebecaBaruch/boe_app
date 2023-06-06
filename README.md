@@ -16,7 +16,7 @@ pip install -r Requirements.txt
 <p>Caso ocorra problemas na instalação com o comando acima, aqui se encontra o comando para instalar todas as bibliotecas usadas no desenvolvimento da aplicação:</p>
 
 ```
-pip install flask-cors python-dotenv flask pymongo pillow numpy bson bcrypt opencv-python
+pip install bcrypt bson cachelib Flask Flask-Caching Flask-Cors opencv-python Pillow PyJWT pymongo python-dateutil python-dotenv werkzeug
 ```
 
 ⚠️ É necessário ter o MongoDB Compass instalado e dentro do MongoDB criar uma base de dados: boe-app
