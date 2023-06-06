@@ -20,6 +20,7 @@ pip install bcrypt bson cachelib Flask Flask-Caching Flask-Cors opencv-python Pi
 ```
 
 ⚠️ É necessário ter o MongoDB Compass instalado e dentro do MongoDB criar uma base de dados: boe-app
+⚠️ Certifique-se de que é possível conectar com o MongoDB Compass
 
 ### Como executar este projeto?
 <p>Para executar este projeto, em seu terminal do repositório, execute a aplicação em Python pelo seguinte comando:</p>
