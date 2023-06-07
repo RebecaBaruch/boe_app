@@ -1,12 +1,6 @@
 from controllers import filterControllers, OxControllers, userControllers
 from controllers.utils.functions import ValInputs
-from controllers.utils.security import Authentication
 from flask import Blueprint, jsonify, request, json
-from PIL import Image
-
-import base64
-import io
-import numpy as np
 
 routes = Blueprint('routes', __name__)
 
@@ -111,14 +105,6 @@ def signupExistingCow(idUser, idCow):
         }
 
         return OxControllers.signupCow(idUser, idCow, cowData['image'], cowData['nTempId'], cowData['nameCow'])
-
-@routes.route('/updateOx/<idGado>', methods=["GET", "POST"])
-@Authentication.RequireAuth
-def updateOx(idGado, data):
-    if request.method == 'GET':
-        return OxControllers.getOxInfo(idGado)
-    if request.method == 'POST':
-        return OxControllers.updateOx(idGado, data)
     
 @routes.route('/rotateImage', methods=['POST'])
 def rotateImage():
