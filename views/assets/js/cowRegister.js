@@ -113,3 +113,9 @@ function rotateImage() {
       console.log(error)
   })
 }
+
+const closeBtn = document.querySelector(".closeBtn");
+
+closeBtn.addEventListener("click", ()=>{
+  overlay.style.display = 'none';
+})
