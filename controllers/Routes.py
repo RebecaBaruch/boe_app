@@ -58,6 +58,10 @@ def updateUser(id):
         }
 
         return userControllers.updateUser(id, userData['name'], userData['email'], userData['password'])
+    
+@routes.route('/deleteUser/<id>', methods=['DELETE'])
+def deletarUsuario(id):
+    return userControllers.deleteUser(id)
 
 @routes.route('/listarPositivos/<idUser>', methods=["GET"])
 def getPositiveCases(idUser):
